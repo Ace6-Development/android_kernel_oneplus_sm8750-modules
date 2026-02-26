@@ -28,19 +28,25 @@ oplus_bsp_tp_comon-y += message_list.o
 oplus_bsp_tp_comon-y += touch_pen/touch_pen_core.o
 oplus_bsp_tp_comon-y += touch_pen/touch_pen_algo.o
 
-obj-$(CONFIG_TOUCHPANEL_OPLUS) += oplus_bsp_tp_comon.o
+obj-m += oplus_bsp_tp_common.o
 
-oplus_bsp_tp_notify-y += touchpanel_notify/touchpanel_event_notify.o
+ccflags-y += \
+	-DCONFIG_TOUCHPANEL_OPLUS_MODULE \
+	-I$(srctree)/$(src)
+
+KBUILD_EXTRA_SYMBOLS := $(M)/touch_custom/Module.symvers
+
+#oplus_bsp_tp_notify-y += touchpanel_notify/touchpanel_event_notify.o
 oplus_bsp_tp_comon-y += touchpanel_tui_support/touchpanel_tui_support.o
-obj-$(CONFIG_TOUCHPANEL_NOTIFY) += oplus_bsp_tp_notify.o
+#obj-$(CONFIG_TOUCHPANEL_NOTIFY) += oplus_bsp_tp_notify.o
 
-obj-$(CONFIG_TOUCHPANEL_SYNAPTICS) += Synaptics/
-obj-$(CONFIG_TOUCHPANEL_FOCAL) += Focal/
-obj-$(CONFIG_TOUCHPANEL_GOODIX) += Goodix/
-obj-$(CONFIG_TOUCHPANEL_NOVA) += Novatek/
+obj-y += Synaptics/
+obj-y += Focal/
+obj-y += Goodix/
+obj-y += Novatek/
 obj-$(CONFIG_TOUCHPANEL_HIMAX) += Himax/
 obj-$(CONFIG_TOUCHPANEL_SAMSUNG) += Samsung/
-obj-$(CONFIG_TOUCHPANEL_ILITEK) += ilitek/
+obj-y += ilitek/
 obj-$(CONFIG_TOUCHPANEL_JADARD) += Jadard/
 obj-$(CONFIG_TOUCHPANEL_ST) += St/
 obj-$(CONFIG_TOUCHPANEL_CHIPONE) += chipone/
