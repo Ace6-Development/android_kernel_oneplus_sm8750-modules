@@ -27,6 +27,8 @@ oplus_bsp_tp_comon-y += tp_ioctl.o
 oplus_bsp_tp_comon-y += message_list.o
 oplus_bsp_tp_comon-y += touch_pen/touch_pen_core.o
 oplus_bsp_tp_comon-y += touch_pen/touch_pen_algo.o
+oplus_bsp_tp_comon-y += touchpanel_tui_support/touchpanel_tui_support.o
+oplus_bsp_tp_common-y := $(oplus_bsp_tp_comon-y)
 
 obj-m += oplus_bsp_tp_common.o
 
@@ -36,9 +38,8 @@ ccflags-y += \
 
 KBUILD_EXTRA_SYMBOLS := $(M)/touch_custom/Module.symvers
 
-#oplus_bsp_tp_notify-y += touchpanel_notify/touchpanel_event_notify.o
-oplus_bsp_tp_comon-y += touchpanel_tui_support/touchpanel_tui_support.o
-#obj-$(CONFIG_TOUCHPANEL_NOTIFY) += oplus_bsp_tp_notify.o
+# oplus_bsp_tp_notify-y += touchpanel_notify/touchpanel_event_notify.o
+# obj-$(CONFIG_TOUCHPANEL_NOTIFY) += oplus_bsp_tp_notify.o
 
 obj-y += Synaptics/
 obj-y += Focal/
