@@ -2,8 +2,8 @@
 # Makefile for TMS devices
 #
 
-ccflags-y += -DCONFIG_TMS_NFC_DEVICE=1 \
-             -DCONFIG_TMS_ESE_DEVICE=1
+ccflags-y += -DCONFIG_TMS_NFC_DEVICE \
+             -DCONFIG_TMS_ESE_DEVICE
 
 obj-m                    += tms_device_modules.o
 tms_device_modules-objs  := tms_common.o
